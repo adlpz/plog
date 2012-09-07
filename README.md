@@ -10,7 +10,15 @@ So no editing plain text files through SSH, no.
 
 It's build aroung Google's App Engine, but can be easily adapted to other storage models and DBs.
 
-Works on Python, doesn't have comments and has an Atom feed. Neat, ain't it?
+**Features**
+
+* Works out-of-the-box with a free-tier App Engine instance
+* Easy configuration through one file. No database set up (yay Datastore!)
+* Markdown syntax
+* Atom feed
+* Code syntax highlightling (http://code.google.com/p/google-code-prettify/)
+* Kick-ass JS admin interface
+* Google-provided account management and security, so I don't have to write safe code.
 
 Story?
 =====
