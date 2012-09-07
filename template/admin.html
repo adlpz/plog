@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html>
 	<head>
+        <script type="text/javascript">
+            document.base_url = "%(base_url)s";
+        </script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
-		<script src="/static/blog/admin.js" type="text/javascript"></script>
-		<link rel="stylesheet" href="/static/blog/admin.css" media="all" type="text/css" />
+        <script src="%(base_url)s/static/admin.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="%(base_url)s/static/admin.css" media="all" type="text/css" />
 	</head>
-	<body>
-		<section id="notification"></section>
-		<section id="list">
-			<h3><a href="#" id="new_b">New Post</a></h3>
-			<h3>List of articles</h3>
-			<ul>
-				%(list)s
-			</ul>
-		</section>
-		<section id="editor">
-			<form action="/blog/api/put" method="post">
-				<input type="hidden" value="" name="key" id="key"/>
-				<input type="text" value="" name="title" id="title"/>
-				<textarea name="content" id="content"></textarea>
-				<select name="format" id="format">
-					<option value="markdown">Markdown</option>
-					<option value="plain">Plain Text</option>
-				</select>
-				<input type="submit" value="Update" />		
-			</form>
-			
-		</section>
-		<footer>
-			<p>Hi %(nick)s &lt;%(mail)s&gt;</p>
-		</footer>
+    <body>
+        <header>
+            <span id="logo" class="right">
+                <h1>plog</h1>
+            </span>
+            <h1>Shitty&trade; Admin Interface</h1>
+
+        </header>
+        <section id="notification"></section>
+        <section id="list">
+        <ul>
+            <li class="new_post"><a href="#" id="new_b">New Post</a></h3>
+                %(list)s
+            </ul>
+        </section>
+        <section id="post">
+            <section id="editor">
+                <form action="%(base_url)s/api/put" method="post">
+                    <input class="clearable" type="hidden" value="" name="key" id="key" />
+                    <label>Title</label>
+                    <input class="clearable" type="text" value="" name="title" id="title" />
+                    <label>Content</label>
+                    <textarea class="clearable" name="content" id="content"></textarea>
+                    <select name="format" id="format">
+                        <option value="markdown">Markdown</option>
+                        <option value="plain">Plain Text</option>
+                    </select>
+                    <div class="button save right">Save changes</div>
+                    <div class="button discard right">Discard changes</div>
+                    <div class="button delete right">Delete post</div>
+                </form>
+            </section>
+            <section id="options">
+
+            </section>
+        </section>
+        <footer>
+
+        </footer>
 	</body>
 </html>

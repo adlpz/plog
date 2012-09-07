@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	
-	<title>Prealfa Blog</title>
-    <link href="%(base)/atom" rel="self" />
-    <link href="%(base)" />
+	<title>%(blog_name)s</title>
+    <link href="%(base_url)s/atom" rel="self" />
+    <link href="%(base_url)s" />
 	<id>$(base)/atom</id>
 	<updated>%(updated)s</updated>
 	<author>
-		<name>%(author)</name>
-        <email>%(email)</email>
+		<name>%(author)s</name>
+        <email>%(email)s</email>
 	</author>
 	
 	%(entries)s
