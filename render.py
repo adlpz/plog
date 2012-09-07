@@ -29,8 +29,6 @@ class Atom:
         self.template = open(path.join(path.dirname(__file__), "template", "atom.xml")).read()
     def render(self, posts):
         entries = ""
-        if not posts:
-            return ''
         for post in posts:
             entry = "<entry><title>%(title)s</title>" + \
         "<link href=\"" + config.base_url + "/post/%(key)s\" />" + \
@@ -38,7 +36,9 @@ class Atom:
         "<updated>%(updated)s</updated>" + \
         "<summary>%(content)s</summary></entry>"
             entries += entry % ({'title':post.title, 'updated': rfc3339(post.date),'key':str(post.key()), 'content':post.content[0:140 if 140 < len(post.content) else len(post.content)]})
-        return self.template % {'base':config.base_url, 'author':config.author, 'email':config.email, 'updated':rfc3339(posts[0].date), 'entries':entries}
+
+        updated = rfc3339(posts[0].date) if len(posts) else 0;
+        return self.template % {'base_url':config.base_url, 'blog_name': config.blog_name, 'author':config.author, 'email':config.email, 'updated':updated, 'entries':entries}
     
 class HTML:
     def __init__(self):
@@ -54,9 +54,7 @@ class HTML:
     def post(self, post):
         h = self.post_t % {'key': post.key(), 'title': post.title.encode("utf-8"),
                            'content':Format.by_name(post.format)(post.content.encode("utf-8")),
-                           'date':post.date}
-                        #  'author':post.author.nickname().encode("utf-8")}
-                        # Author crashes the site because the GA account sucks and hasn't it defined somehow. Retarded.
+                           'date':post.date, 'base_url' : config.base_url}
         return h
     def header(self, title=""):
         return self.header_t % {'base_url': config.base_url, 'title': title, 'blog_name' : config.blog_name}

@@ -81,7 +81,7 @@ class Atom(webapp.RequestHandler):
 application = webapp.WSGIApplication([(r'/([0-9])*', Index),
                                       (r'/post/(.*)', Post),
                                       (r'/api/(.*)', API),
-                                      ('/atom', Atom)])
+                                      (r'/atom', Atom)])
 
 if __name__ == "__main__":
     run_wsgi_app(application)
