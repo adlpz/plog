@@ -2,12 +2,12 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
 
-import blog.storage as storage
-import blog.render as render
-import blog.config as config
+import storage as storage
+import render as render
+import config as config
 
 
-import blog.lib.simplejson as json
+import lib.simplejson as json
 
 class Index(webapp.RequestHandler):
     def get(self, page):
@@ -57,7 +57,7 @@ class API(webapp.RequestHandler):
                            self.request.get('content'),
                            self.request.get('format'),
                            self.request.get('key'))
-                self.redirect("/blog/")
+                self.redirect("/")
             else:
                 self.error(403)
         else:
@@ -78,10 +78,10 @@ class Atom(webapp.RequestHandler):
             
                 
       
-application = webapp.WSGIApplication([(r'/blog/([0-9])*', Index),
-                                      (r'/blog/post/(.*)', Post),
-                                      (r'/blog/api/(.*)', API),
-                                      ('/blog/atom', Atom)])
+application = webapp.WSGIApplication([(r'/([0-9])*', Index),
+                                      (r'/post/(.*)', Post),
+                                      (r'/api/(.*)', API),
+                                      ('/atom', Atom)])
 
 if __name__ == "__main__":
     run_wsgi_app(application)

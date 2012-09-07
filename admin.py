@@ -5,7 +5,7 @@ from google.appengine.api import users
 
 from os import path
 
-import blog.storage as storage
+import storage as storage
 import logging
 
 
@@ -27,7 +27,7 @@ class Admin(webapp.RequestHandler):
             htl += "<li><a href='#%s' class='post' style='color: #87d5e9'>%s</a> (%s) <a href='#' style='color:red' class='delete'>[Delete post]</a></li>" % (str(post.key()), post.title, post.date)
         return htl
 
-application = webapp.WSGIApplication([('/blog/admin.*', Admin)])
+application = webapp.WSGIApplication([('/admin.*', Admin)])
 
 if __name__ == "__main__":
     run_wsgi_app(application)

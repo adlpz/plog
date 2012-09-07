@@ -2,8 +2,7 @@ from os import path
 from google.appengine.api import urlfetch
 import urllib
 from lib.rfc3339 import rfc3339
-
-import blog.config as config
+import config as config
 
 
 class Format:
@@ -33,12 +32,13 @@ class Atom:
         if not posts:
             return ''
         for post in posts:
-            entries += """<entry><title>%(title)s</title>
-        <link href="http://www.prealfa.com/blog/post/%(key)s" />
-        <id>http://www.prealfa.com/blog/post/%(key)s</id>
-        <updated>%(updated)s</updated>
-        <summary>%(content)s</summary></entry>""" % ({'title':post.title, 'updated': rfc3339(post.date),'key':str(post.key()), 'content':post.content[0:140 if 140 < len(post.content) else len(post.content)]})
-        return self.template % {'updated':rfc3339(posts[0].date), 'entries':entries}
+            entry = "<entry><title>%(title)s</title>" + \
+        "<link href=\"" + config.base_url + "/post/%(key)s\" />" + \
+        "<id>" + config.base_url + "/post/%(key)s</id>" + \
+        "<updated>%(updated)s</updated>" + \
+        "<summary>%(content)s</summary></entry>"
+            entries += entry % ({'title':post.title, 'updated': rfc3339(post.date),'key':str(post.key()), 'content':post.content[0:140 if 140 < len(post.content) else len(post.content)]})
+        return self.template % {'base':config.base_url, 'author':config.author, 'email':config.email, 'updated':rfc3339(posts[0].date), 'entries':entries}
     
 class HTML:
     def __init__(self):
@@ -59,6 +59,6 @@ class HTML:
                         # Author crashes the site because the GA account sucks and hasn't it defined somehow. Retarded.
         return h
     def header(self, title=""):
-        return self.header_t % {'title': title}
+        return self.header_t % {'base_url': config.base_url, 'title': title, 'blog_name' : config.blog_name}
     def footer(self):
-        return self.footer_t
+        return self.footer_t % {'blog_name': config.blog_name, 'email' : config.email, 'author': config.author, 'license': config.license_str}
