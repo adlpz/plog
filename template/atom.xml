@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	
+	<title>Prealfa Blog</title>
+	<link href="http://www.prealfa.com/blog/atom" rel="self" />
+	<link href="http://www.prealfa.com/blog/" />
+	<id>http://www.prealfa.com/blog/atom</id>
+	<updated>%(updated)s</updated>
+	<author>
+		<name>Adria Lopez</name>
+		<email>insecure@prealfa.com</email>
+	</author>
+	
+	%(entries)s
+	
+</feed>
