@@ -1,4 +1,4 @@
-application: prealfaws
+application: plog 
 version: 2
 runtime: python
 api_version: 1
@@ -6,15 +6,7 @@ api_version: 1
 handlers:
 - url: /static/
   static_dir: static
-- url: /tipet/
-  script: tipet.py
-- url: /blog/admin
-  script: /blog/admin.py
-- url: /blog/.*
-  script: /blog/dynamic.py
-- url: /me/.*
-  script: me.py
-- url: /fbm/.*
-  script: /fbm/handle.py
+- url: /admin
+  script: /admin.py
 - url: /.*
-  script: main.py
+  script: /dynamic.py
