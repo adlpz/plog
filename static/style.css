@@ -2,7 +2,7 @@ body {
 	font-size: 14px;
 	color: #222;
 	font-family: "Helvetica", "Verdana", sans-serif;
-	background: #F9F4E4;
+	background: #fff;
 	margin: 0;
 }
 
@@ -16,12 +16,12 @@ div.topbar {
 }
 body > div.container {
 	width: 768px;
-	margin: 0 auto;
+    margin: 0 40px;
 }
 
 header {
 	background: #222;
-	padding: 5px 20px;
+	padding: 5px 40px;
 }
 
 header p {
@@ -33,13 +33,8 @@ header p a {
 	color: #F5F5F5;
 }
 
-header p span.sub {
-	font-style: italic;
-	color: #FFE7BA;
-}
-
 article {
-	margin: 20px 60px;
+	margin: 20px 0px;
 }
 article h1 {
 	margin: 10px 0 0 0;
@@ -47,7 +42,7 @@ article h1 {
 }
 
 article h1 a {
-	color: #8B7D6B;
+	color: #4FCC13;
 	text-decoration: none;
 }
 
@@ -58,13 +53,6 @@ article p.meta {
 	text-indent: 0;
 }
 
-
-article p.postfoot {
-	color: #000;
-	font-weight: bold;
-	text-indent: 0;
-
-}
 
 article p {
 	margin: 15px 0px;

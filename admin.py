@@ -5,8 +5,7 @@ from google.appengine.api import users
 
 from os import path
 
-import storage as storage
-import config as config
+import storage, config
 
 
 class Admin(webapp.RequestHandler):
@@ -25,7 +24,7 @@ class Admin(webapp.RequestHandler):
     def list(self, posts):
         htl = ""
         for post in posts:
-            htl += "<li class='post'><a href='#' class='delete'></a><a href='#%s' class='post' >%s</a></li>" % (str(post.key()), post.title[:33] + ("..." if len(post.title)>33 else ""))
+            htl += "<li class='post'></a><a href='#%s' class='post' >%s</a></li>" % (str(post.key()), post.title[:33] + ("..." if len(post.title)>33 else ""))
         return htl
 
 application = webapp.WSGIApplication([('/admin.*', Admin)])

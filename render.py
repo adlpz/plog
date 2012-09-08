@@ -2,8 +2,8 @@ from os import path
 from google.appengine.api import urlfetch
 import urllib
 from lib.rfc3339 import rfc3339
-import config as config
 
+import config 
 
 class Format:
     @classmethod
@@ -59,4 +59,4 @@ class HTML:
     def header(self, title=""):
         return self.header_t % {'base_url': config.base_url, 'title': title, 'blog_name' : config.blog_name}
     def footer(self):
-        return self.footer_t % {'blog_name': config.blog_name, 'email' : config.email, 'author': config.author, 'license': config.license_str}
+        return self.footer_t % {'plog_version': config.plog_version, 'blog_name': config.blog_name, 'email' : config.email, 'author': config.author, 'license': config.license_str}

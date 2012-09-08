@@ -2,10 +2,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
 
-import storage as storage
-import render as render
-import config as config
-
+import storage, render, config
 
 import lib.simplejson as json
 

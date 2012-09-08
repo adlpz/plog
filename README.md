@@ -1,6 +1,6 @@
 plog
-====
-====
+####
+
 
 What?
 =====
@@ -36,5 +36,5 @@ so it can be useful for people else than me.
 Usage?
 ======
 
-Drop in a App Engine instance. Edit config.py to your liking. Go to http://your_blog/admin. Write things. Make it pretty
+Drop in a App Engine instance. Edit config.py to your liking. Go to http://your\_blog/admin. Write things. Make it pretty
 editing the css if you feel like.

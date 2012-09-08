@@ -1,3 +1,9 @@
+
+
+plog_version = "1.0"
+
+
+
 # Count of posts per page
 count = 10
 # Your name and contact email. Will be diplayed everywhere!
