@@ -24,7 +24,7 @@ class Admin(webapp.RequestHandler):
     def list(self, posts):
         htl = ""
         for post in posts:
-            htl += "<li class='post'></a><a href='#%s' class='post' >%s</a></li>" % (str(post.key()), post.title[:33] + ("..." if len(post.title)>33 else ""))
+            htl += "<li class='post'><a href='#%s' class='post' >%s</a></li>" % (str(post.key()), post.title[:33] + ("..." if len(post.title)>33 else ""))
         return htl
 
 application = webapp.WSGIApplication([('/admin.*', Admin)])
