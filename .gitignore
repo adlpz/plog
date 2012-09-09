@@ -1,1 +1,3 @@
 *.pyc
+libs/*
+!lib/rfc3339.py

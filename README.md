@@ -14,19 +14,26 @@ should be trivial to run anywhere else.
 
 **Features**
 
-* Works out-of-the-box with a free-tier App Engine instance
 * Easy configuration through one file. No database set up (yay Datastore!)
 * **Markdown syntax**
 * Atom feed
 * **Code syntax highlightling** (http://code.google.com/p/google-code-prettify/)
 * Kick-ass JS admin interface
+* **Easy customization through a single [Mustache](http://mustache.github.com/) template**
 * Google-provided account management and security, so I don't have to write safe code.
 
 **Drawbacks**
 
 * No comment feature. Just use twitter for feedback!
 * Needs a Google Account for authentication.
-* Very basic templating system, just using Python 2.x string formatting.
+
+**Dependencies**
+
+* [Pystache](https://github.com/defunkt/pystache), a python implementation of the Mustache templating system.
+* [simplejson](https://github.com/simplejson/simplejson), a streamlined JSON library for Python.
+* [rfc3339](https://bitbucket.org/henry/rfc3339/src), for Atom-compatible datetime format. **Included with Plog**.
+
+You can install this dependencies in your system or just drop the packages in the **lib/** directory.
 
 #Story?
 
