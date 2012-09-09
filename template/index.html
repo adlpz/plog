@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>{{blog_name}}::{{title}}</title>
+		<link rel="stylesheet" href="/static/google-code-prettify/sunburst.css" type="text/css" />
+		<script type="text/javascript" src="/static/google-code-prettify/prettify.js"></script>
+        <link rel="stylesheet" type="text/css" media="all" href="static/style.css" />
+		<script type="text/javascript">
+			function l()
+			{
+                // Force the execution of prettyprint on every pre block.
+                // This is a workaround for the incompatibility with Markdown syntax.
+				var pres = document.getElementsByTagName("pre");
+				var i;
+				for (i = 0; i < pres.length; i++)
+				{
+					pres[i].className += " prettyprint";
+				}
+				prettyPrint();
+			};
+		</script>
+	</head>
+	<body onload="l()">
+		<header>
+            <p><a href="%(base_url)s">{{blog_name}}</a></p>
+		</header>
+        <section id="content">
+            {{#posts}}
+                <article>
+                    <h1><a href="{{url}}">{{title}}</a></h1>
+                    <p class="meta">{{date}}</p>
+                    {{{content}}}
+                </article>
+            {{/posts}}
+        </section>
+        <footer>
+            <p>{{blog_name}} {{license}} {{author}}.
+                <a href="mailto:%(email)s">Contact</a>.
+                <a href="./atom">Atom Feed</a>.
+                <a href="http://github.com/adlpz/plog">Powered by PLOG {{plog_version}}</a>.
+            </p>
+        </footer>
+    </body>
+</html>
+

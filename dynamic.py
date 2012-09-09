@@ -1,22 +1,23 @@
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
+
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
 
 import storage, render, config
 
-import lib.simplejson as json
+import simplejson as json
 
 class Index(webapp.RequestHandler):
     def get(self, page):
-        renderer = render.HTML()
         page = int(page) if page else 0
         self.response.headers['Content-Type'] = "text/html"
         posts = storage.list(config.count*page, config.count)
-        self.response.out.write(renderer.render(posts))
+        self.response.out.write(render.html_render(posts))
         
 class Post(webapp.RequestHandler):
     def get(self, key):
-        renderer = render.HTML()
         try:
             post = storage.get(key)
         except storage.DBException:
@@ -24,7 +25,7 @@ class Post(webapp.RequestHandler):
             return
         if post:
             self.response.headers['Content-Type'] = "text/html"
-            self.response.out.write(renderer.render([post]))
+            self.response.out.write(render.html_render([post]))
         else:
             self.error(404)
       
@@ -69,9 +70,8 @@ class API(webapp.RequestHandler):
 class Atom(webapp.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "application/atom+xml"
-        renderer = render.Atom()
         posts = storage.list(0, config.count)
-        self.response.out.write(renderer.render(posts))      
+        self.response.out.write(render.atom_render(posts))      
             
                 
       

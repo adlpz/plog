@@ -2,15 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	
 	<title>%(blog_name)s</title>
-    <link href="%(base_url)s/atom" rel="self" />
-    <link href="%(base_url)s" />
-	<id>$(base)/atom</id>
-	<updated>%(updated)s</updated>
+    <link href="{{base_url}}/atom" rel="self" />
+    <link href="{{base_url}}" />
+    <id>{{base_url}}/atom</id>
+    <updated>{{updated}}</updated>
 	<author>
-		<name>%(author)s</name>
-        <email>%(email)s</email>
+        <name>{{author}}</name>
+        <email>{{email}}</email>
 	</author>
 	
-	%(entries)s
+    {{#posts}}
+    <entry>
+        <title>{{title}}</title>
+        <link href="{{url}}" />
+        <id>{{url}}</id>
+        <updated>{{updated}}</updated>
+        <summary>{{content}}</summary>
+    </entry>
+    {{/posts}}
 	
 </feed>

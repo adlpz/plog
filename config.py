@@ -13,4 +13,4 @@ email = "contact@email.com"
 blog_name = "Plog Example Blog"
 base_url = "http://localhost:8080"
 # String describing what license your blog pubs under. Can have HTML.
-license_str = "&copy; 2012 " + author
+license = "&copy; 2012 " + author
