@@ -42,6 +42,5 @@ def list(offset, count):
     q.order("-date")
     return q.fetch(count, offset)
 
-    
-        
-    
+def count():
+    return Post.all().count()

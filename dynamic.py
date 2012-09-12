@@ -1,6 +1,8 @@
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
 
+import math
+
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
@@ -13,8 +15,15 @@ class Index(webapp.RequestHandler):
     def get(self, page):
         page = int(page) if page else 0
         self.response.headers['Content-Type'] = "text/html"
-        posts = storage.list(config.count*page, config.count)
-        self.response.out.write(render.html_render(posts))
+        posts = storage.list(config.posts_per_page*page, config.posts_per_page)
+        number_of_posts = storage.count()
+        number_of_pages = int(math.ceil(float(number_of_posts)/config.posts_per_page))
+        metadata = {
+                'page': page,
+                'posts': number_of_posts, 
+                'pages': number_of_pages
+                }
+        self.response.out.write(render.html_render(posts, metadata))
         
 class Post(webapp.RequestHandler):
     def get(self, key):
@@ -70,7 +79,7 @@ class API(webapp.RequestHandler):
 class Atom(webapp.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "application/atom+xml"
-        posts = storage.list(0, config.count)
+        posts = storage.list(0, config.posts_per_feed)
         self.response.out.write(render.atom_render(posts))      
             
                 
